@@ -190,4 +190,5 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
   <p align="center">
   <img src="https://i.imgur.com/HFguOhB.png" height="80%" width="80%" alt="windows start menu shows login user"/>
   </p>
+   <p align="center"><b><i>"THE END OF THIS LAB”</p></b></i>
 
