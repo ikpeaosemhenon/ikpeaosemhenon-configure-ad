@@ -7,7 +7,7 @@ Active Directory serves as a centralized system for efficiently managing numerou
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Active Directory Domain Services
-- PowerShell
+- PowerShell.
 
 ## Operating Systems being Used
 
