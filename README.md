@@ -1,19 +1,15 @@
-<p align="center">
-<img src="https://github.com/0xbythesecond/Configure-AD/blob/main/Active%20Directory%20Custom.png?raw=true" alt="Microsoft Active Directory Logo"/>
-</p>
 
 # On-premises Active Directory Deployed in the Cloud (Azure)
-Active Directory centrally manages thousands of user accounts in a single place (accounts, passwords, and permissions) as well as manage devices on a large scale.
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+Active Directory serves as a centralized system for efficiently managing numerous user accounts, including account information, passwords, and permissions, alongside overseeing a large-scale management of devices. This guide provides details on how to implement on-premises Active Directory using Azure Virtual Machines..<br />
 
-## Environments and Technologies Used
+## Environments and Technologies is being used 
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Active Directory Domain Services
 - PowerShell
 
-## Operating Systems Used
+## Operating Systems being Used
 
 - Windows Server 2022
 - Windows 10 (21H2)
@@ -29,18 +25,17 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 | Terms | Descriptions|
 |-------| ------------|
-| Resource Group | is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution or only those resources that you want to manage as a group.
-| Virtual Machine | is a digital version of a physical computer. Virtual machine software can run programs and operating systems, store data, connect to networks, and do other computing functions, and requires maintenance such as updates and system monitoring
-| Remote Desktop | Remote desktop is the ability to connect with and use a faraway desktop computer from a separate computer. Remote desktop users can access their desktop, open and edit files, and use applications as if they were actually sitting at their desktop computer.
+| Resource Group | A resource group is like a container that encompasses associated resources within an Azure solution. It has the flexibility to comprise all resources related to the solution or selectively include only those resources intended for group management.
+| Virtual Machine | A virtual machine is a digital representation of a physical computer. Software for virtual machines enables the execution of programs and operating systems, data storage, network connections, and various computing tasks. Similar to physical computers, virtual machines need regular maintenance, including updates and system monitoring.
+| Remote Desktop | Remote desktop refers to the capability of connecting to and utilizing a distant desktop computer from a separate computer. Users of remote desktop can retrieve their desktop, modify files, and utilize applications as if they were physically present at their desktop computer.
 | Active Directory Domain Services | are the core functions in Active Directory that manage users and computers and allow sysadmins to organize the data into logical hierarchies.
 | Powershell |  is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. PowerShell runs on Windows, Linux, and macOS.
 | Domain Controller |  are the servers in your network that host AD DS. DCs respond to authentication requests and store AD DS data
 |Organizational Unit (OU) | Organizational units (OUs) in an Active Directory Domain Services (AD DS) managed domain to let you logically group objects such as user accounts, service accounts, or computer accounts. You can then assign administrators to specific OUs, and apply group policy to enforce targeted configuration settings.
-|Join Client to Domain | Joining a computer to a domain means connecting that computer to a network that is managed by a centralized server known as a domain controller. A domain is a logical grouping of computers, users, and resources that can be managed centrally by a network administrator. Overall, joining a computer to a domain helps to improve security, simplify network management, and increase productivity. |
+|Join Client to Domain |Enlisting a computer into a domain entails linking it to a network overseen by a central server called a domain controller. A domain constitutes a cohesive arrangement of computers, users, and resources, streamlining centralized management by a network administrator. In essence, the act of connecting a computer to a domain serves to enhance security, streamline network administration, and boost overall productivity.. |
 
 ## Deployment and Configuration Steps
-
-Firstly, we will need to establish the resource group so that you can add your virtual machines for the Domain Controller (DC-1) and the Client Virtual Machine (Client-1). The Domain Controller VM will use a Windows Server 2022 system image (a serialized copy of the entire state of a computer system stored in some non-volatile form such as a file). 
+Initially, the creation of a resource group is required to facilitate the inclusion of your virtual machines, namely the Domain Controller (DC-1) and the Client Virtual Machine (Client-1). For the Domain Controller VM, a Windows Server 2022 system image will be employed, which represents a serialized copy capturing the complete state of a computer system stored in a non-volatile form, such as a file.. 
 
 <p align="center">
 <img src="https://i.imgur.com/lKmRcIy.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -55,7 +50,7 @@ Private IP address set to static (static IP addresses are necessary for devices 
 </p>
 <br />
 
-Second, check for a connection between the client device and domain controller by logging into Client-1 with Remote Desktop Connection (RDP) and pinging DC-1’s private IP address using ping -t (perpetual ping). ICMPv4 (ping) was allowed on the Domain Controller's (DC-1) Firewall in Windows Firewall (Core Networking Diagnostics - ICMP Echo Request (ICMPv4-In)). After logging back into Client-1 check to make sure the ping is successful.
+Secondly, Verify the connection status between the client device and domain controller by accessing Client-1 through Remote Desktop Connection (RDP) and initiating a continuous ping to DC-1's private IP address using the "ping -t" command. Ensure that ICMPv4 (ping) is permitted on the Domain Controller's (DC-1) Firewall in Windows Firewall settings (specifically under Core Networking Diagnostics - ICMP Echo Request - ICMPv4-In). Upon re-logging into Client-1, confirm the success of the ping operation.
 
 <p align="center">
 <img src="https://i.imgur.com/FWLTP8X.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -66,7 +61,7 @@ Pictured below displays that the ICMP rule has been allowed on the Windows firew
 <img src="https://i.imgur.com/f4i0pdh.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>  
 </p>
 <br />  
-While in DC-1, we've selected to 'add roles and features' to enable Active Directory Domain Services. Promoted as a Domain Controller (DC): a new forest as mydomain.com setup. Remote Desktop was Restarted and logged back into DC-1 as user: mydomain.com\labuser.
+While operating in DC-1, we opted to 'add roles and features' to activate Active Directory Domain Services. Subsequently, DC-1 was promoted to serve as a Domain Controller (DC) for a new forest configured under the domain name mydomain.com. Following this setup, Remote Desktop was restarted, and we logged back into DC-1 with the user credentials mydomain.com\labuser.
 
 <p align="center">
 <img src="https://i.imgur.com/ipCHp9t.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -173,8 +168,7 @@ while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
 ```
   
 </details>
-
-  Here is the script loaded into powershell prior to running the script to create 1000 random users
+Here is the PowerShell script that has been loaded before executing it to generate 1000 random users.
   <p align="center">
   <img src="https://i.imgur.com/ez4THWm.png" height="80%" width="80%" alt="powershell with script loaded"/>
   </p>
